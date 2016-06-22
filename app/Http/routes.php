@@ -16,3 +16,5 @@
 //});
 
 Route::get('/','SiteController@index');
+
+Route::get('/detail/{id}', 'DetailController@index');
