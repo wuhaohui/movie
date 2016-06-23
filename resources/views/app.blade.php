@@ -44,9 +44,23 @@
             </div>
         </div>
         <div id="menu">
-            <div class="m"><p><a href="http://www.piaov.com/" title="飘V网" class="curr">首页</a><a
-                            href="/list/1.html">电影</a><a href="/list/13.html">电视</a><a href="/list/24.html">动漫</a><a
-                            href="/list/25.html">综艺</a><a href="/list/12.html">影视预告</a></p></div>
+            <div class="m">
+                <?php $url = \Illuminate\Http\Request::capture()->getUri() ?>
+                <p><a href="/" title="飘V网"
+                      @if(!preg_match("/show\/\d+.html/",$url))
+                      class="curr"
+                      @endif
+                    >首页</a>
+                    @foreach(nav() as  $key => $nav)
+                    <a
+
+                            @if(preg_match("/show\/".$key.".html/",$url))
+                                    class="curr"
+                                    @endif
+                            href="/show/{{ $key }}.html">{{ $nav }}</a>
+                    @endforeach
+                </p>
+            </div>
             <p class="s">热门分类：
                 @foreach(header_common_data() as $type)
                 <a href="#">{{ $type['type_name'] }}</a>

@@ -28,20 +28,32 @@ class Movie extends Model
             $movie = Movie::orderBy($orderType, $orderBy)->take($limit)->get()->toArray();
         }
 
-        if ($movie) {
-            $now_day = Carbon::now()->day;
-            foreach ($movie as $key => $item) {
-                $movie[$key]['month'] = Carbon::parse($item['updated_at'])->month;
-                $movie[$key]['day'] = Carbon::parse($item['updated_at'])->day;
-                if ($movie[$key]['day'] == $now_day) {
-                    $movie[$key]['is_new'] = true;
-                } else {
-                    $movie[$key]['is_new'] = false;
-                }
+        return self::decorate($movie);
+    }
+
+    public static function decorate($movie)
+    {
+        $now_day = Carbon::now()->day;
+        
+        if (is_object($movie)){
+            $movie = $movie->toArray();
+        }
+        
+        foreach ($movie as $key => $item) {
+            $date = Carbon::parse($item['updated_at']);
+            $movie[$key]['year'] = $date->year;
+            $movie[$key]['month'] = $date->month;
+            $movie[$key]['day'] = $date->day;
+            if ($item['now_episodes']){
+                $movie[$key]['status'] = '更新到'.$movie[$key]['now_episodes'].'集';
+            }
+            if ($movie[$key]['day'] == $now_day) {
+                $movie[$key]['is_new'] = true;
+            } else {
+                $movie[$key]['is_new'] = false;
             }
         }
         return $movie;
     }
-
 
 }

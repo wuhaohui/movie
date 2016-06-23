@@ -1,0 +1,1 @@
+document.writeln("<script type=\"text/javascript\" src=\"http://cpc.88rpg.net/js/c/3759_4474.js\"><\/script> ");
