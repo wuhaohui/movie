@@ -14,17 +14,23 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+Route::group(['middleware' => 'web'], function () {
 
-Route::get('/','SiteController@index');
+    Route::get('/', 'SiteController@index');
 
-Route::get('/detail/{id}', 'DetailController@index');
-Route::get('/detail/{id}.html{never}', 'DetailController@index');
+    Route::get('/detail/{id}', 'DetailController@index');
+    Route::get('/detail/{id}.html{never}', 'DetailController@index');
 
-Route::get('/cloudDisk/{disk_id}', 'CloudDiskController@index');
-Route::get('/cloudDisk/{disk_id}.html', 'CloudDiskController@index');
+    Route::get('/cloudDisk/{disk_id}', 'CloudDiskController@index');
+    Route::get('/cloudDisk/{disk_id}.html', 'CloudDiskController@index');
 
-Route::get('/show/{id}', 'ShowController@index');
-Route::get('/show/{id}.html', 'ShowController@index');
+
+    Route::get('/show/{id}.html', 'ShowController@index');
+//Route::get('/show/{id}', 'ShowController@index');
+
+    Route::post('/search.html', 'SearchController@store');
 
 //Route::get('/search/{type}/{param}', 'SearchController@index');
-Route::get('/search/{type}/{param}.html', 'SearchController@index');
+    Route::get('/search/{type}/{param}.html', 'SearchController@index');
+
+});

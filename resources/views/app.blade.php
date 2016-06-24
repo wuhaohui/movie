@@ -18,13 +18,13 @@
         <p class="plus"><a href="/" class="ph">排行榜</a><a href="/" class="dq">影视大全</a></p>
         <div id="search">
             <div class="ser">
-                <form name="formsearch" id="formsearch" action='/search.html' method="post" target="_blank"><input
+                <form name="formsearch" id="formsearch" action='/search.html' method="post" target="_blank">
+                    <input
                             type="text" id="kw" name="wd" class="search-input" value="请在此处输入影片片名或演员名称。"
                             onFocus="if(this.value=='请在此处输入影片片名或演员名称。'){this.value='';}"
-                            onBlur="if(this.value==''){this.value='请在此处输入影片片名或演员名称。';};"/><input type="submit"
-                                                                                                 name="submit"
-                                                                                                 class="sub"
-                                                                                                 value="搜 索"/></form>
+                            onBlur="if(this.value==''){this.value='请在此处输入影片片名或演员名称。';};"/>
+                    {!! csrf_field() !!}
+                    <input type="submit" name="submit" class="sub" value="搜 索"/></form>
             </div>
             <p><a href="http://www.piaov.com/html/32/">奶酪陷阱</a><a href="http://www.piaov.com/html/31/">秦时明月</a><a
                         href="http://www.piaov.com/search-wd-%E7%88%B1%E6%83%85%E9%A3%9F%E7%89%A9%E9%93%BE.html">爱情食物链</a><a
@@ -49,28 +49,31 @@
                 <p><a href="/" title="飘V网"
                       @if(!preg_match("/show\/\d+.html/",$url))
                       class="curr"
-                      @endif
+                            @endif
                     >首页</a>
                     @foreach(nav() as  $key => $nav)
-                    <a
+                        <a
 
-                            @if(preg_match("/show\/".$key.".html/",$url))
-                                    class="curr"
-                                    @endif
-                            href="/show/{{ $key }}.html">{{ $nav }}</a>
+                                @if(preg_match("/show\/".$key.".html/",$url))
+                                class="curr"
+                                @endif
+                                href="/show/{{ $key }}.html">{{ $nav }}</a>
                     @endforeach
                 </p>
             </div>
             <p class="s">热门分类：
                 @foreach(header_common_data() as $type)
-                <a href="#">{{ $type['type_name'] }}</a>
+                    <a href="/search/type_id/{{ $type['type_id'] }}.html">{{ $type['type_name'] }}</a>
                 @endforeach
             </p>
         </div>
+    </div>
+    </div>
         @yield('main')
         <div id="footer"><p>免责声明：本站资源来源于互联网，如果侵犯了你的权益，请 发邮件至：piaov114@gmail.com，我们会及时删除断开链接，谢谢合作！</p>
             <p>Copyright &copy; 2016 piaov.com. All Rights Reserved.</p>
             <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
                 document.write(unescape("%3Cspan id='cnzz_stat_icon_1257156843'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1257156843' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
 </body>
 </html>

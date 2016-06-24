@@ -10,6 +10,6 @@ class CloudDiskController extends Controller
 {
     public function index()
     {
-        var_dump('asda');
+        return view('cloudDisk');
     }
 }
