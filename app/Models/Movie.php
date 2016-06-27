@@ -56,4 +56,8 @@ class Movie extends Model
         return $movie;
     }
 
+    public function disk()
+    {
+        return  $this->hasOne('App\Models\CloudDisk','movie_id','movie_id');
+    }
 }
