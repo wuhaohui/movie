@@ -14,6 +14,9 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+
+Route::auth();
+
 Route::group(['middleware' => 'web'], function () {
 
     Route::get('/', 'SiteController@index');
@@ -33,4 +36,8 @@ Route::group(['middleware' => 'web'], function () {
 //Route::get('/search/{type}/{param}', 'SearchController@index');
     Route::get('/search/{type}/{param}.html', 'SearchController@index');
 
+
+    Route::group(['prefix'=>'backend','namespace'=>'Backend','middleware'=>'auth'], function () {
+        Route::resource('/','SiteController');
+    });
 });
