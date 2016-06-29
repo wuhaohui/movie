@@ -1,6 +1,6 @@
 @extends("layouts.master")
 @section("content")
-    {!! Form::open(['url' => '/backend', 'class'=>'form-horizontal','enctype'=>'multipart/form-data']) !!}
+    {!! Form::open(['url' => '/backend', 'class'=>'form-horizontal']) !!}
     <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title">基础参数</h3>
