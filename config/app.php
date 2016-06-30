@@ -208,5 +208,6 @@ return [
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
-
+    'name' => '卡拉骚电影站'
+    
 ];

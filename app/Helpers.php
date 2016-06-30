@@ -11,7 +11,7 @@ use App\Models\MovieType;
 
 function header_common_data()
 {
-    return $data['movie_type'] = MovieType::hot();   
+    return $data['movie_type'] = MovieType::hot();
 }
 
 function nav()
@@ -23,4 +23,15 @@ function nav()
         '25' => '综艺',
         '12' => '影视预告',
     ];
+}
+
+if (!function_exists('setting')) {
+    function setting()
+    {
+        $data = \App\Models\Setting::all()->toArray();
+        foreach ($data as $item) {
+            \Illuminate\Support\Facades\Config::set('setting.'.$item['key'], unserialize($item['value']));
+        }
+       
+    }
 }

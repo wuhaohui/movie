@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use App\Models\MovieType;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Config;
+
 
 class SiteController extends Controller
 {

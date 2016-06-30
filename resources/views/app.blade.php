@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <?php setting() ?>
     <meta charset="utf-8"/>
-    <title>2016最新电影大全，高清电视剧排行榜,飘V影视 - 飘V网</title>
-    <meta name="keywords" content="飘V网,最新电影,高清电影,电视剧"/>
-    <meta name="description" content="飘V网为您提供2016最新最快电影娱乐资讯，国产剧韩剧欧美剧及TVB电视剧的迅雷影音边下边播和网盘分享，电影点播以及迅雷电影下载！"/>
+    <title> @yield('title','2016最新电影大全，高清电视剧排行榜,影视') - {{ Config::get('setting.domain.siteName') }}</title>
+    <meta name="keywords" content="{{ Config::get('setting.domain.keyword') }}"/>
+    <meta name="description" content="{{ Config::get('setting.domain.siteDesc') }}"/>
     <link href="{{ asset('/css/style.css') }}" type="text/css" rel="stylesheet"/>
     <script type="text/javascript" src="{!! asset('js/common.js') !!}"></script>
 </head>
 <body>
 <div id="header">
     <div class="head">
-        <div class="top"><span>欢迎来到飘V网，我们为大家免费提供好看的电影</span>
-            <p><a href="javascript:void(0)" onClick="addFavorite('http://www.piaov.com','飘V网');">加入收藏</a> - <a
-                        href="/piaov_pc.php" target="_blank" class="desk">将飘V网放到桌面</a></p></div>
-        <div class="logo"><a href="http://www.piaov.com" title="首页">首页</a></div>
+        <div class="top"><span>欢迎来到{{ Config::get('setting.domain.siteName') }}，我们为大家免费提供好看的电影</span>
+            <p><a href="javascript:void(0)" onClick="addFavorite('http://www.kalasao.com','{{ Config::get('app.name') }}');">加入收藏</a> - <a
+                        href="/piaov_pc.php" target="_blank" class="desk">将{{ Config::get('setting.domain.siteName') }}放到桌面</a></p></div>
+        <div class="logo"><a href="http://www.kalasap.com" title="首页">首页</a></div>
         <p class="plus"><a href="/" class="ph">排行榜</a><a href="/" class="dq">影视大全</a></p>
         <div id="search">
             <div class="ser">
@@ -46,7 +47,7 @@
         <div id="menu">
             <div class="m">
                 <?php $url = \Illuminate\Http\Request::capture()->getUri() ?>
-                <p><a href="/" title="飘V网"
+                <p><a href="/" title="{{ Config::get('app.name') }}"
                       @if(!preg_match("/show\/\d+.html/",$url))
                       class="curr"
                             @endif
@@ -70,8 +71,8 @@
     </div>
     </div>
         @yield('main')
-        <div id="footer"><p>免责声明：本站资源来源于互联网，如果侵犯了你的权益，请 发邮件至：piaov114@gmail.com，我们会及时删除断开链接，谢谢合作！</p>
-            <p>Copyright &copy; 2016 piaov.com. All Rights Reserved.</p>
+        <div id="footer"><p>免责声明：本站资源来源于互联网，如果侵犯了你的权益，请 发邮件至：kalasao@outlook.com，我们会及时删除断开链接，谢谢合作！</p>
+            <p>Copyright &copy; 2016 kalasao.com. All Rights Reserved.</p>
         </div>
 </body>
 </html>

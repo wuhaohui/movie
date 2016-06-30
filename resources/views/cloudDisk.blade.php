@@ -1,5 +1,7 @@
 @extends("app")
-
+@section('title')
+    {{ $movie->name }}
+@endsection
 @section("main")
     <div id="endplay">
         <div class="player">

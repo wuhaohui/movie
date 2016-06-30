@@ -13,8 +13,10 @@ class SiteController extends Controller
 {
     public function index(Request $request)
     {
-        $setting = Setting::find('domain')->toArray();;
-        return view('backend.admin',compact('setting'));
+        $setting = Setting::where('key','domain')->first()->value;
+        $setting = unserialize($setting);
+        $request->session()->flashInput($setting);
+        return view('backend.admin', compact('setting'));
     }
 
     public function store(Request $request)
@@ -28,7 +30,7 @@ class SiteController extends Controller
         ];
 
         Setting::updateOrCreate(['key' => 'domain'], ['value' => serialize($value)]);
-
+        $request->session()->flashInput($value);
         return view('backend.admin');
     }
 
@@ -41,4 +43,5 @@ class SiteController extends Controller
             'siteDesc' => 'required|max:255',
         ]);
     }
+
 }

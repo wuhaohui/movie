@@ -8,7 +8,7 @@ class Setting extends Model
 {
     protected $table = 'setting';
     
-    protected $primaryKey = 'key';
+//    protected $primaryKey = 'key';
     
     protected $fillable = ['value','key'];
 
