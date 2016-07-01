@@ -14,7 +14,8 @@ class SearchController extends Controller
     {
         $paginate = Movie::where($type,$param)->orderBy('updated_at','desc')->paginate(12)->toArray();
         $movies =  Movie::decorate($paginate['data']);
-        return view('show',compact('paginate','movies'));
+        $title = !empty($movies) ? $movies[0]['type']:'';
+        return view('show',compact('paginate','movies','title'));
     }
 
     /**
@@ -24,7 +25,7 @@ class SearchController extends Controller
      */
     public function store(Request $request)
     {
-        $keyword = $request->input('wd');
+        $title = $keyword = $request->input('wd');
         if (isset($keyword)){
             $paginate = Movie::where('name','like','%'.$keyword.'%')
                ->orWhere('actors','like','%'.$keyword.'%')
@@ -32,6 +33,6 @@ class SearchController extends Controller
                 ->paginate(12)->toArray();
             $movies =  Movie::decorate($paginate['data']);
         }
-        return view('show',compact('movies','paginate'));
+        return view('show',compact('movies','paginate','title'));
     }
 }

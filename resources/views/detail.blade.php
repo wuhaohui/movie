@@ -5,11 +5,11 @@
 @section('main')
     <div id="main">
         <div class="banner">
-            <script type="text/javascript" src="js/conter.js"></script>
+            {{--<script type="text/javascript" src="js/conter.js"></script>--}}
         </div>
         <div class="view">
             <div class="wz"> 当前位置:　<a href="/">首页</a>　&raquo;　<a
-                        href="/list/16.html">{{ $movie->type }}</a>　&raquo;　{{ $movie->name }}</div>
+                        href="/search/type_id/{{ $movie->type_id }}.html">{{ $movie->type }}</a>　&raquo;　{{ $movie->name }}</div>
             <div class="pic"><img src="{{ $movie->image }}" alt="{{ $movie->name }}"/>
                 <p><a href="#kan">立即播放</a></p></div>
             <div class="info"><h1>{{ $movie->name }}</h1>

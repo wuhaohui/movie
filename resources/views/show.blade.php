@@ -3,7 +3,6 @@
 @section('main')
     <div id="main">
         <div class="banner">
-            <script type="text/javascript" src="{{ asset('js/conter.js') }}"></script>
         </div>
         <div class="shot pageright">
             <div class="title"><h3>本周热播</h3></div>
@@ -86,7 +85,7 @@
         </div>
         <div class="pagelist"><!-- 筛选开始 -->
             <div class="filter">
-                <div class="title"><b>电视剧</b></div>
+                <div class="title"><b>{{ $title }}</b></div>
             </div>
             <div class="movielist">
                 @if(!empty($movies))
