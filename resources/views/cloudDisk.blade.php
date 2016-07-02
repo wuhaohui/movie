@@ -16,7 +16,7 @@
                     <div id="player" class="player">
                         <div class="wplz">
                             @foreach($links as $link)
-                            <li>{{ $link->type }}：<a target="_blank" rel="nofollow" href="{{ $link->link }}">{{  $link->link }}</a>&nbsp;&nbsp;密码：{{  $link->password }}
+                            <li>{{ empty($link->type)?'链接':$link->type }}：<a target="_blank" rel="nofollow" href="{{ $link->link }}">{{  $link->link }}</a>&nbsp;&nbsp;密码：{{  $link->password }}
                             </li>
                             @endforeach
                             <li></li>

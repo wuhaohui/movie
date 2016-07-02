@@ -19,7 +19,7 @@ class Movie extends Model
      * @param string $orderBy
      * @return mixed
      */
-    public static function category_movie($category_id, $orderType = 'updated_at', $limit = 12, $orderBy = 'desc')
+    public static function differentCategoryMovie($category_id = null, $limit = 12,  $orderType = 'updated_at', $orderBy = 'desc')
     {
         if ($category_id) {
             $movie = Movie::where('category_id', $category_id)
@@ -44,6 +44,7 @@ class Movie extends Model
             $movie[$key]['year'] = $date->year;
             $movie[$key]['month'] = $date->month;
             $movie[$key]['day'] = $date->day;
+            $movie[$key]['link'] = 'detail/'.$item['movie_id'].'.html';
             if ($item['now_episodes']){
                 $movie[$key]['status'] = '更新到'.$movie[$key]['now_episodes'].'集';
             }
@@ -54,6 +55,19 @@ class Movie extends Model
             }
         }
         return $movie;
+    }
+
+//    public function differentCategoryMovie($category_ids,$orderType = '',$orderBy = '',$limit = '12')
+//    {
+//        if (is_array($category_ids)){
+//            $movie = Movie::where('category_id', $category_ids)
+//                ->orderBy($orderType, $orderBy)->take($limit)->get()->toArray();
+//        }
+//    }
+
+    public function testc()
+    {
+        var_dump($this);exit;
     }
 
     public function disk()
